@@ -1,0 +1,9 @@
+import pandas
+import numpy
+
+def pivot(infile="C:\\out\\Concatenated-Merged.csv", outfile="C:\\out\\Pivoted.csv"):
+    df=pandas.read_csv(infile)
+    df=df.replace(-9999, numpy.nan)
+    df["Temp"]=df["Temp"]/10.0
+    tabel= pandas.pivot_table(df,index=["ID"],columns="Year",values="Temps")
+    table.to_csv(outfile)
